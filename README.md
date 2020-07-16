@@ -1,4 +1,4 @@
-# Popup Wiki Plugin
+# Popup Wiktionary Plugin
 
 - [Features](#features)
 - [Installation](#installation)
@@ -7,7 +7,7 @@
 
 ## Features
 
-- Open Wikipedia articles in a popup browser to easily make extracts directly into SuperMemo.
+- Open Wiktionary articles in a popup browser to easily make extracts directly into SuperMemo.
 
 ## Installation
 
