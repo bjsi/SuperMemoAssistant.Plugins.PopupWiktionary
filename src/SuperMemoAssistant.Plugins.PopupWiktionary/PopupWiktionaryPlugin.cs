@@ -43,6 +43,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
   using SuperMemoAssistant.Services.Sentry;
   using SuperMemoAssistant.Services.UI.Configuration;
   using SuperMemoAssistant.Sys.IO.Devices;
+  using SuperMemoAssistant.Sys.Remoting;
 
   // ReSharper disable once UnusedMember.Global
   // ReSharper disable once ClassNeverInstantiated.Global
@@ -93,10 +94,10 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
 
       Svc.HotKeyManager
          .RegisterGlobal(
-           "SearchWikipedia",
-           "Search Wikipedia for the selected term",
+           "SearchWiktionary",
+           "Search Wiktionary for the selected term",
            HotKeyScopes.SM,
-           new HotKey(Key.W, KeyModifiers.CtrlAlt),
+           new HotKey(Key.W, KeyModifiers.CtrlAltShift),
            WiktionarySearch
       );
 
@@ -115,45 +116,30 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
       try
       {
 
-        string query = Popups.GetSearchQuery("Search Wiktionary");
-        if (query.IsNullOrEmpty())
+        string searchTerm = Popups.GetSearchQuery("Search Wiktionary");
+        if (searchTerm.IsNullOrEmpty())
           return;
 
-        // build the search url
-        string url = "";
+        if (popupWindowSvc.IsNull())
+        {
+          LogTo.Warning("Failed to open new Wiktionary window in PopupBrowser because popupService is null.");
+          return;
+        }
 
-        if (await popupWindowSvc?.Open(url))
-        {
-          LogTo.Debug("");
-        }
+        if (await popupWindowSvc.Open(searchTerm, ContentType.Search))
+          LogTo.Debug("Successfully opened new Wiktionary window in PopupBrowser");
         else
-        {
-          LogTo.Error("");
-        }
+          LogTo.Error("Failed to open new Wiktionary window in PopupBrowser");
 
       }
       catch (RemotingException) { }
 
     }
 
-
     #endregion
 
 
-
-
     #region Methods
-
-    // Uncomment to register an event handler for element changed events
-    // [LogToErrorOnException]
-    // public void OnElementChanged(SMDisplayedElementChangedEventArgs e)
-    // {
-    //   try
-    //   {
-    //     Insert your logic here
-    //   }
-    //   catch (RemotingException) { }
-    // }
 
     #endregion
   }

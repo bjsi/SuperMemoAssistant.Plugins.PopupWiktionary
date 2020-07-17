@@ -26,7 +26,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
         Validates = true)]
   public class PopupWiktionaryCfg : CfgBase<PopupWiktionaryCfg>, INotifyPropertyChangedEx
   {
-    [Title("Popup Wiki Plugin")]
+    [Title("Popup Wiktionary Plugin")]
 
     [Heading("By Jamesb | Experimental Learning")]
 

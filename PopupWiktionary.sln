@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FE7DC443
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemoAssistant.Plugins.PopupWiktionary.Tests", "src\SuperMemoAssistant.Plugins.PopupWiktionary.Tests\SuperMemoAssistant.Plugins.PopupWiktionary.Tests.csproj", "{75D238F3-6971-4650-AB42-D0707EC1F7DA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMemoAssistant.Plugins.PopupWindow.Interop", "..\PopupWindow.Interop\src\SuperMemoAssistant.Plugins.PopupWindow.Interop\SuperMemoAssistant.Plugins.PopupWindow.Interop.csproj", "{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		1. Alpha (Debug)|Any CPU = 1. Alpha (Debug)|Any CPU
@@ -42,6 +44,16 @@ Global
 		{75D238F3-6971-4650-AB42-D0707EC1F7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D238F3-6971-4650-AB42-D0707EC1F7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D238F3-6971-4650-AB42-D0707EC1F7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.1. Alpha (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.1. Alpha (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.2. Beta (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.2. Beta (Release)|Any CPU.Build.0 = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.3. Stable (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.3. Stable (Release)|Any CPU.Build.0 = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +61,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{229E0476-C0A7-4A19-A883-6411EE7BBAE6} = {84D661F9-4FA7-4BCD-BE9F-29640C6B2600}
 		{75D238F3-6971-4650-AB42-D0707EC1F7DA} = {FE7DC443-2FBF-44C9-A0C2-4FAB6F842EFE}
+		{F5E3349D-1266-4C2F-8673-A8DCE0B5AC34} = {84D661F9-4FA7-4BCD-BE9F-29640C6B2600}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5D3A5A5-9F22-4CC7-88D1-C27159367878}

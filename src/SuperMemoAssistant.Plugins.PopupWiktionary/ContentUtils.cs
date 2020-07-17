@@ -1,7 +1,11 @@
-﻿using System;
+﻿using mshtml;
+using SuperMemoAssistant.Extensions;
+using SuperMemoAssistant.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SuperMemoAssistant.Plugins.PopupWiktionary
@@ -35,7 +39,5 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
       }
       return cleanSelText;
     }
-
-
   }
 }
