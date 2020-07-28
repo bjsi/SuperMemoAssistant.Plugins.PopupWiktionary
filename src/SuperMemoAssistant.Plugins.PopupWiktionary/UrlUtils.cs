@@ -8,6 +8,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
 {
   public static class UrlUtils
   {
+    // TODO:
     public const string MobileWiktionaryRegex = @"";
     public const string DesktopWiktionaryRegex = @"";
 

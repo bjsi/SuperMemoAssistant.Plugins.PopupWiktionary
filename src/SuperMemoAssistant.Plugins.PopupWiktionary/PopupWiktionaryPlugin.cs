@@ -36,6 +36,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
   using System.Runtime.Remoting;
   using System.Windows.Input;
   using Anotar.Serilog;
+  using SuperMemoAssistant.Plugins.PopupWiktionary.Service;
   using SuperMemoAssistant.Plugins.PopupWindow.Interop;
   using SuperMemoAssistant.Services;
   using SuperMemoAssistant.Services.IO.HotKeys;
@@ -67,19 +68,24 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
 
     /// <inheritdoc />
     public override bool HasSettings => false;
-    private PopupWiktionaryProvider _popupWikiProvider { get; } = new PopupWiktionaryProvider();
-    private IPopupWindowSvc popupWindowSvc { get; set; }
     public PopupWiktionaryCfg Config;
 
-    #endregion
+    /// <summary>
+    /// Content Service to call the wikipedia API
+    /// </summary>
+    private ContentService _contentService { get; } = new ContentService();
 
+    /// <summary>
+    /// Popup Window Service to open article and search content.
+    /// </summary>
+    private IPopupWindowSvc popupWindowSvc { get; set; }
+
+    #endregion
 
     private void LoadConfig()
     {
       Config = Svc.Configuration.Load<PopupWiktionaryCfg>() ?? new PopupWiktionaryCfg();
     }
-
-
 
     #region Methods Impl
 
@@ -88,7 +94,13 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
     {
       LoadConfig();
 
-      this.RegisterPopupWindowProvider("Wiktionary", new List<string> { UrlUtils.DesktopWiktionaryRegex, UrlUtils.MobileWiktionaryRegex }, _popupWikiProvider);
+      if(!this.RegisterPopupWindowProvider("Wiktionary", new List<string> { UrlUtils.DesktopWiktionaryRegex, UrlUtils.MobileWiktionaryRegex }, _contentService))
+      {
+        LogTo.Warning("Failed to register popup window provider");
+        return;
+      }
+
+      LogTo.Debug("Successfully registered provider with popup window");
 
       popupWindowSvc = GetService<IPopupWindowSvc>();
 
@@ -98,7 +110,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
            "Search Wiktionary for the selected term",
            HotKeyScopes.SM,
            new HotKey(Key.W, KeyModifiers.CtrlAltShift),
-           WiktionarySearch
+           SearchWiktionary
       );
 
     }
@@ -110,8 +122,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
     }
 
 
-    [LogToErrorOnException]
-    public async void WiktionarySearch()
+    public async void SearchWiktionary()
     {
       try
       {
