@@ -94,7 +94,7 @@ namespace SuperMemoAssistant.Plugins.PopupWiktionary
     {
       LoadConfig();
 
-      if(!this.RegisterPopupWindowProvider("Wiktionary", new List<string> { UrlUtils.DesktopWiktionaryRegex, UrlUtils.MobileWiktionaryRegex }, _contentService))
+      if(!this.RegisterPopupWindowProvider("Wiktionary", new string[] { UrlUtils.DesktopWiktionaryRegex, UrlUtils.MobileWiktionaryRegex }, _contentService))
       {
         LogTo.Warning("Failed to register popup window provider");
         return;
